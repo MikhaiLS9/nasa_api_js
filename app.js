@@ -1,10 +1,10 @@
+
 const div = document.querySelector(".block");
 const params = {
   api: "LXC0y2pqRm92XBnQk5x2HcqFMr0ahgroh5UkhhsN",
-  startDate: "2022-05-01",
-  endDate: "2022-05-08",
+  startDate: "2023-10-10",
+  endDate: "2023-10-17",
 };
-
 async function getAsteroids() {
   const url1 = `https://api.nasa.gov/neo/rest/v1/feed?start_date=${params.startDate}&end_date=${params.endDate}&api_key=${params.api}`;
 
@@ -30,7 +30,7 @@ async function getAsteroids() {
         const hazardousAsteroid =
           asteroid.is_potentially_hazardous_asteroid === false
             ? "Не опасный"
-            : "Опасность";
+            : `<img src="/img/⚠ Опасен.png" alt="Опасен" />`;
         const missDistanceStr = asteroid.close_approach_data.map(
           (item) =>
             Number(item.miss_distance.kilometers)
@@ -40,17 +40,30 @@ async function getAsteroids() {
         );
 
         const approachDates = asteroid.close_approach_data.map(
-          (approach) => approach.close_approach_date_full
+          (approach) => new Intl.DateTimeFormat("ru-RU", {
+            year : 'numeric',
+            month : 'long',
+            day : 'numeric',
+          }).format(new Date(approach.close_approach_date)) 
         );
+       
 
         const asteroidElement = document.createElement("div");
+        asteroidElement.className = 'asteroidElement'
         asteroidElement.innerHTML = `
-        <h2 class="asteroidsName">${approachDates}</h2>
+        <h2 class="approachDates">${approachDates}</h2>
+        <div class="styledDiv">
         <p class="missDistance">${missDistanceStr}</p>
-        <img src="./pngegg 2.jpg" alt="">
-        <p class="asteroidsData">${asteroidName}</p>
-        <p class="estimatedDiameter">${averageEstimatedDiameterStr}</p>
-        <button>Заказать</button> <span>${hazardousAsteroid}</span>
+        <img class="asteroidImg" src="/img/pngegg 1.png" alt="">
+        <div class="styledAsteroidName">
+        <p class="asteroidName">${asteroidName}</p>
+        <p class="estimatedDiameter">Ø ${averageEstimatedDiameterStr}</p>
+        </div>
+        </div>
+        <div class="styledButton">
+        <button>Заказать</button> 
+        <span class="hazardousAsteroid">${hazardousAsteroid}</span>
+        </div>
       `;
         div.appendChild(asteroidElement);
       });
@@ -61,3 +74,5 @@ async function getAsteroids() {
 }
 
 getAsteroids();
+
+// export default getAsteroids

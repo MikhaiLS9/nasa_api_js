@@ -1,11 +1,116 @@
-.asteroidsName {
-    color: red;
-  }
-  
-  .asteroidsData {
-    color: black;
-  }
-  body {
-    background: #3e4345;
-  }
-  
+* {
+  margin: 0;
+  padding: 5px;
+  box-sizing: border-box;
+}
+body {
+  background: black;
+  color: white;
+  height: 100%;
+}
+.container {
+  display: flex;
+}
+.imgEatrh {
+  object-fit: cover;
+  width: 377px;
+  height: 436px;
+}
+
+.block {
+  max-width: 100%;
+  min-height: 100%;
+  font-family: Helvetica, sans-serif;
+  margin-bottom: 10px;
+  white-space: nowrap;
+}
+.asteroidElement {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.approachDates {
+  flex: 1 0 0;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 32px;
+}
+
+.asteroidImg {
+  width: 37px;
+  height: 40px;
+}
+
+.styledDiv {
+  display: flex;
+  max-width: 220.67px;
+  max-height: 112px;
+  gap: 8px;
+}
+
+.missDistance {
+  position: relative;
+  text-align: center;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%;
+}
+
+.missDistance::before {
+  content: url("Arrow 1.png");
+  position: absolute;
+  bottom: 10px;
+}
+
+.styledAsteroidName {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-content: center;
+  align-items: center;
+}
+.asteroidName {
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 24px;
+  text-decoration-line: underline;
+}
+.styledButton {
+  display: flex;
+  align-content: center;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+}
+.estimatedDiameter {
+  white-space: nowrap;
+}
+
+button {
+  width: 90px;
+  height: 24px;
+  display: flex;
+  padding: 2px 11px;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  border-radius: 16px;
+  background-color: #F86600;
+  color: white;
+
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 20px; /* 181.818% */
+  letter-spacing: 1px;
+}
+
+.hazardousAsteroid {
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px; /* 142.857% */
+}
