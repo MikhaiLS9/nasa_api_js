@@ -10,6 +10,7 @@ body {
 }
 .container {
   display: flex;
+  gap: 50px;
 }
 .imgEatrh {
   object-fit: cover;
@@ -25,15 +26,15 @@ body {
   font-weight: 400;
   line-height: normal;
 }
-.headerText{
-font-size: 16px;
-font-style: normal;
-font-weight: 400;
-line-height: 24px; /* 150% */
+.headerText {
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px; /* 150% */
 }
 
 .block {
-  max-width: 100%;
+  width: 300px;
   min-height: 100%;
   font-family: Helvetica, sans-serif;
   margin-bottom: 10px;
@@ -128,4 +129,18 @@ button {
   font-style: normal;
   font-weight: 400;
   line-height: 20px; /* 142.857% */
+}
+
+.cart {
+  display: flex;
+  width: 150px;
+  height: 200px;
+  padding: 16px;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  row-gap: 32px;
+  flex-wrap: wrap;
+  border-radius: 24px;
+  background: #232526;
 }

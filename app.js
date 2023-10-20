@@ -1,5 +1,5 @@
-
 const div = document.querySelector(".block");
+let count = 0
 const params = {
   api: "LXC0y2pqRm92XBnQk5x2HcqFMr0ahgroh5UkhhsN",
   startDate: "2023-10-10",
@@ -39,17 +39,16 @@ async function getAsteroids() {
               .split(",")[0] + " км"
         );
 
-        const approachDates = asteroid.close_approach_data.map(
-          (approach) => new Intl.DateTimeFormat("ru-RU", {
-            year : 'numeric',
-            month : 'long',
-            day : 'numeric',
-          }).format(new Date(approach.close_approach_date)) 
+        const approachDates = asteroid.close_approach_data.map((approach) =>
+          new Intl.DateTimeFormat("ru-RU", {
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+          }).format(new Date(approach.close_approach_date))
         );
-       
 
         const asteroidElement = document.createElement("div");
-        asteroidElement.className = 'asteroidElement'
+        asteroidElement.className = "asteroidElement";
         asteroidElement.innerHTML = `
         <h2 class="approachDates">${approachDates}</h2>
         <div class="styledDiv">
@@ -61,7 +60,7 @@ async function getAsteroids() {
         </div>
         </div>
         <div class="styledButton">
-        <button>Заказать</button> 
+        <button class="btn">Заказать</button> 
         <span class="hazardousAsteroid">${hazardousAsteroid}</span>
         </div>
       `;
@@ -71,8 +70,22 @@ async function getAsteroids() {
   } catch (error) {
     console.error("Error:", error);
   }
+  const cartText = document.querySelector('.cartText')
+  const btn = document.querySelectorAll(".btn").forEach((item) =>
+    item.addEventListener("click", function () {
+      count++
+      cartText.innerHTML = count > 1 ? count + ' астероида' : count + ' остероид';
+    })
+  );
+
+  const sendCart = document.querySelector('.sendCart')
+  const sendBtn = document.querySelector('.sendBtn').addEventListener('click', function(){
+    document.querySelector('.myCart').style.display = 'none'
+    sendCart.innerHTML = "Заказ отправлен"
+  })
+  
+  
 }
 
 getAsteroids();
 
-// export default getAsteroids
